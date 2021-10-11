@@ -7,7 +7,8 @@
  * @license	GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 defined('_JEXEC') or die('Restricted access');
-?><?php
+?>
+<?php
 $tmpl = hikaInput::get()->getWord('tmpl', '');
 $module_id = (int)$this->params->get('id', 0);
 
@@ -63,12 +64,21 @@ if(empty($this->rows)) {
 	<div class="hikashop_checkout_loading_elem"></div>
 	<div class="hikashop_checkout_loading_spinner <?php echo $spinner_css ?>"></div>
 <?php
-	if(!empty($desc))
-		echo $desc;
+	if(!empty($desc)){ ?>
+	<div style="float:right;"><img src="/images/koszyk.png" style="width:35px">
+<div style="-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;margin-top:-12px; margin-left:35px;width:25px; height:25px; line-height:25px; text-align:center; background:#1a3a52; color:#fff; font-size:12px; ">0</div></div>
 
+	<?php 
+		//echo $desc;
+
+	}
 	if(!in_array($tmpl, array('component', 'ajax', 'raw'))) {
 ?>
 </div>
+
+
+
+
 <div class="clear_both"></div>
 <?php
 	}
@@ -92,6 +102,8 @@ $this->params->set('show_quantity_field', 0);
 
 if(!in_array($tmpl, array('component', 'ajax', 'raw'))) {
 ?>
+
+
 <div id="hikashop_cart_<?php echo $module_id; ?>" class="hikashop_cart">
 <?php
 }
@@ -109,6 +121,7 @@ if(!empty($this->element->messages)) {
 	}
 }
 $text = '';
+?><div style="display:none"><?php 
 if(!empty($small_cart)) {
 	$price_name  = '';
 	if(!$this->params->get('show_shipping', 0) && isset($this->total->prices[0]->price_value_without_shipping)){
@@ -174,9 +187,15 @@ if(!empty($small_cart)) {
 	}elseif($small_cart == 3) {
 		$extra_data .= ' ontouchend="window.hikashop.toggleOverlayBlock(\'hikashop_cart_dropdown_'.$module_id.'\', \'hover\'); return false;" onmouseover="window.hikashop.toggleOverlayBlock(\'hikashop_cart_dropdown_'.$module_id.'\', \'hover\'); return false;"';
 	}
-?>
+	
+	
+?></div>
+<a  href="<?php echo $link; ?>">
+<div style="float:right;"><img src="/images/koszyk.png" style="width:35px">
+<div style="-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;margin-top:-12px; margin-left:35px;width:25px; height:25px; line-height:25px; text-align:center; background:#1a3a52; color:#fff; font-size:12px; "><?php echo $qty; ?></div></div>
+</a>
 <!-- MINI CART MAIN LINK -->
-	<a class="hikashop_small_cart_checkout_link" href="<?php echo $link; ?>"<?php echo $extra_data; ?>>
+	<a style="display:none" class="hikashop_small_cart_checkout_link" href="<?php echo $link; ?>"<?php echo $extra_data; ?>>
 		<span class="hikashop_small_cart_total_title"><?php echo $text; ?></span>
 	</a>
 <!-- EO MINI CART MAIN LINK -->
@@ -247,6 +266,9 @@ $columns = array(
 	'delete' => (int)$this->params->get('show_cart_delete', 1)
 );
 $nb_columns = 0;
+
+//print_r($this->element);
+
 foreach($columns as $c) {
 	if(!empty($c))
 		$nb_columns++;

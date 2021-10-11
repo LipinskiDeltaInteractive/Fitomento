@@ -63,6 +63,14 @@ defined('_JEXEC') or die('Restricted access');
 		<meta itemprop="sku" content="<?php echo $this->element->product_code; ?>">
 		<meta itemprop="productID" content="<?php echo $this->element->product_code; ?>">
 	</h1>
+<div style="padding-top:10px"><b>Dostępność:</b> <?php echo $this->element->dostpno; ?></div>
+<div style="padding-top:10px"><b>Czas wysyłki: </b><?php echo $this->element->czaswysyki; ?></div>
+<div style="padding-top:10px"><b>Cena: </b><?php if($this->element->produkttylkozkod=='tak'){ ?>Produkt za kod<?php }else{ ?>
+<?php echo number_format($this->element->prices[0]->price_value_with_tax,2).' zł'; ?>
+<?php }  ?>
+	</div><br/>
+
+
 
 
 <div id="hikashop_product_description_main" class="hikashop_product_description_main" itemprop="description"><?php

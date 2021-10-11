@@ -78,7 +78,7 @@ if($start_date > 0 && $start_date > $now) {
 ?>
 <!-- EO SALE START MESSAGE -->
 <!-- STOCK MESSAGE -->
-<span class="hikashop_product_stock_count">
+<span style="display:none" class="hikashop_product_stock_count">
 <?php
 	if(!empty($this->row->product_stock_message))
 		echo JText::sprintf($this->row->product_stock_message, $this->row->product_quantity);

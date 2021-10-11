@@ -94,7 +94,7 @@ if($start_date > 0 && $start_date > $now) {
 <?php
 $stock_class = ($stock != 0) ? "" : " hikashop_product_no_stock";
 ?>
-<span class="hikashop_product_stock_count<?php echo $stock_class; ?>">
+<span style="display:none" class="hikashop_product_stock_count<?php echo $stock_class; ?>">
 <?php
 	if(!empty($this->row->product_stock_message))
 		echo JText::sprintf($this->row->product_stock_message, $stock);

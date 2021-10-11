@@ -87,7 +87,7 @@ if(!empty($this->row->extraData->top)) { echo implode("\r\n",$this->row->extraDa
 <?php if($haveLink) { ?>
 									<a href="<?php echo $link;?>">
 <?php } ?>
-										<?php echo $this->row->product_code; ?>
+										<?php //echo $this->row->product_code; ?>
 <?php if($haveLink) { ?>
 									</a>
 <?php } ?>
