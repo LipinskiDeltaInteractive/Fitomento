@@ -7,7 +7,18 @@
  * @license	GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 defined('_JEXEC') or die('Restricted access');
-?><?php if(empty($this->ajax)) { ?>
+?>
+<style>
+
+#hikashop_messages_warning ul li {color: red !important}
+#hikashop_messages_warning ul li a{color: red !important}
+
+</style>
+<style>
+#hikashop_messages_error ul li{padding:15px !important; color:red !important;margin-bottom:20px !important; font-size:19px !important; font-weight:700 !important; background: rgba(193, 66, 66, 0.3) !important}
+#hikashop_messages_error ul	{padding:0 !important; margin:0 !important; list-style-type: none !important;}
+</style>
+<?php if(empty($this->ajax)) { ?>
 <div id="hikashop_checkout_coupon_<?php echo $this->step; ?>_<?php echo $this->module_position; ?>" data-checkout-step="<?php echo $this->step; ?>" data-checkout-pos="<?php echo $this->module_position; ?>" class="hikashop_checkout_coupon">
 <?php } ?>
 	<div class="hikashop_checkout_loading_elem"></div>
@@ -17,9 +28,21 @@ defined('_JEXEC') or die('Restricted access');
 	$this->checkoutHelper->displayMessages('coupon');
 
 	$cart = $this->checkoutHelper->getCart();
+	//
+	$czy_produkt_za_kod=0;
+	foreach($cart->products as $produkt_pojedynczy){
+		if($produkt_pojedynczy->produkttylkozkod=='tak'){ $czy_produkt_za_kod=1; }
+		
+	}
 	if(empty($cart->coupon)) {
-?>
-	<label for="hikashop_checkout_coupon_input_<?php echo $this->step; ?>_<?php echo $this->module_position; ?>"><?php echo JText::_('HIKASHOP_ENTER_COUPON'); ?></label>
+		if($czy_produkt_za_kod==0){}else{ 
+?><style>
+#hikabtn_checkout_next{display:none}
+</style>
+<div style="font-size:16px !important; font-weight:400">W Twoim koszyku znajduje się produkt dostępny do zakupu jedynie za KOD. Wpisz swój kod i kliknij "Dodaj", a następnie przejdź "Dalej”.<br/><br/>
+</div>
+
+	<label style="font-size:20px !important" for="hikashop_checkout_coupon_input_<?php echo $this->step; ?>_<?php echo $this->module_position; ?>"><?php echo JText::_('HIKASHOP_ENTER_COUPON'); ?></label>
 	<div class="input-append">
 		<input class="hikashop_checkout_coupon_field" id="hikashop_checkout_coupon_input_<?php echo $this->step; ?>_<?php echo $this->module_position; ?>" type="text" name="checkout[coupon]" value=""/>
 		<button type="submit" onclick="return window.checkout.submitCoupon(<?php echo $this->step.','.$this->module_position; ?>);" class="<?php echo $this->config->get('css_button','hikabtn'); ?> hikabtn-primary hikabtn_checkout_coupon_add"><?php
@@ -27,7 +50,8 @@ defined('_JEXEC') or die('Restricted access');
 		?></button>
 		</div>
 <?php
-	} else {
+		}
+		} else {
 		echo JText::sprintf('HIKASHOP_COUPON_LABEL', @$cart->coupon->discount_code);
 		if(empty($cart->cart_params->coupon_autoloaded)) {
 			global $Itemid;
@@ -35,8 +59,8 @@ defined('_JEXEC') or die('Restricted access');
 			if(!empty($Itemid))
 				$url_itemid = '&Itemid=' . $Itemid;
 ?>
-	<a href="#removeCoupon" onclick="return window.checkout.removeCoupon(<?php echo $this->step; ?>,<?php echo $this->module_position; ?>);" title="<?php echo JText::_('REMOVE_COUPON'); ?>">
-		<i class="fas fa-trash"></i>
+	<br/><br/><a style="font-size:16px !important;font-weight:400" href="#removeCoupon" onclick="return window.checkout.removeCoupon(<?php echo $this->step; ?>,<?php echo $this->module_position; ?>);" title="<?php echo JText::_('REMOVE_COUPON'); ?>">
+		<i class="fas fa-trash"></i>Zmień kod kuponu
 	</a>
 <?php
 		}

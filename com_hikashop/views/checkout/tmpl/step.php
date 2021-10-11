@@ -206,6 +206,20 @@ defined('_JEXEC') or die('Restricted access');
 	?>
 </div>
 <div class="clear_both"></div>
+<style>
+#hikashop_messages_error ul li {color: red !important}
+#hikashop_messages_error ul li a{color: red !important}
+#hikashop_messages_warning ul li {color: red !important}
+#hikashop_messages_warning ul li a{color: red !important}
+
+</style>
+
+<script>
+
+
+window.scrollTo(0, 0);
+
+</script>
 <?php
 
 if(hikaInput::get()->getWord('tmpl','')=='component'){

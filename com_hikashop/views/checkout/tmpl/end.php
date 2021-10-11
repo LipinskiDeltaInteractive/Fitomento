@@ -9,9 +9,9 @@
 defined('_JEXEC') or die('Restricted access');
 ?><?php
 if(empty($this->html)) {
-	echo JText::_('THANK_YOU_FOR_PURCHASE');
-	if(!empty($this->url))
-		echo '<br/>'.JText::sprintf('YOU_CAN_NOW_ACCESS_YOUR_ORDER_HERE', $this->url);
+	echo '<div style="font-size:16px; font-weight:700;">Dziękujemy za złożenie zamówienia. Wkrótce otrzymasz paczkę. 😊<br><br/><a style="font-weight:400; font-size:13px;" href="https://www.fitomento.com/kategorie-produktow">Wróć do listy kategorii produktów</a></div>';
+	//if(!empty($this->url))
+		//echo '<br/>'.JText::sprintf('YOU_CAN_NOW_ACCESS_YOUR_ORDER_HERE', $this->url);
 } else {
 	echo $this->html;
 }

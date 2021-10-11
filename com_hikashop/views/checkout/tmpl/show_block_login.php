@@ -7,7 +7,9 @@
  * @license	GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 defined('_JEXEC') or die('Restricted access');
-?><?php
+?>
+
+<?php
 if(!empty($this->options['current_login']) && empty($this->mainUser->guest) && empty($this->ajax))
 	return;
 if(empty($this->ajax)) {
@@ -173,7 +175,28 @@ if(invalid_field)
 
 ?>
 		<div class="hkc-lg-4">
-			<h2><?php echo JText::_('IDENTIFICATION'); ?></h2>
+			<!--<h2><?php echo JText::_('IDENTIFICATION'); ?></h2>-->
+			
+			<div class="controls2">
+	<label for="data[register][registration_method]login" id="data[register][registration_method]login-lbl" class="radio">
+	
+	<input type="radio" name="data[register][registration_method]" id="data[register][registration_method]login" value="login" onchange="displayRegistration(this); document.getElementById('hikashop_checkout_registration').style.display='none';document.getElementById('hikashop_checkout_login_form').style.display='block';" aria-invalid="false">Mam już Konto - Logowanie<br>
+	</label>
+	<label for="data[register][registration_method]0" id="data[register][registration_method]0-lbl" class="radio">
+	
+	<input type="radio" name="data[register][registration_method]" id="data[register][registration_method]0" value="0" checked="checked" onchange="displayRegistration(this); document.getElementById('hikashop_checkout_registration').style.display='block';  document.getElementById('hikashop_checkout_login_form').style.display='none';" aria-invalid="false">Chcę utworzyć Konto - Rejestracja<br>
+	</label>
+	<label for="data[register][registration_method]2" id="data[register][registration_method]2-lbl" class="radio">
+	
+	<input type="radio" name="data[register][registration_method]" id="data[register][registration_method]2" value="2" onchange="displayRegistration(this); document.getElementById('hikashop_checkout_registration').style.display='block'; document.getElementById('hikashop_checkout_login_form').style.display='none'; " aria-invalid="false">Zamawiam bez rejestracji<br>
+	</label>
+</div>
+			<br/><br/>
+		<style>
+		#hikashop_checkout_registration, #hikashop_checkout_login_form{display:none;}
+		
+		.controls{display:none; }</style>	
+			
 <?php
 			$values = array();
 			$v = null;
@@ -378,3 +401,11 @@ if(empty($this->ajax)) {
 </div>
 <?php
 }
+?>
+<script>
+window.scrollTo(0, 0);
+</script>
+<style>
+#hikashop_messages_warning ul li {color: red !important}
+#hikashop_messages_warning ul li a{color: red !important}
+</style>

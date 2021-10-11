@@ -7,7 +7,19 @@
  * @license	GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 defined('_JEXEC') or die('Restricted access');
-?><?php
+?><style>
+.hkform-horizontal .hkc-sm-4.hkcontrol-label{width:15px !important}
+.hkform-group.control-group.hikashop_checkout_address_address_firstname .hkc-sm-4.hkcontrol-label,
+.hkform-group.control-group.hikashop_checkout_address_address_lastname .hkc-sm-4.hkcontrol-label,
+.hkform-group.control-group.hikashop_checkout_address_address_street .hkc-sm-4.hkcontrol-label,
+.hkform-group.control-group.hikashop_checkout_address_address_post_code .hkc-sm-4.hkcontrol-label,
+.hkform-group.control-group.hikashop_checkout_address_address_telephone .hkc-sm-4.hkcontrol-label,
+.hkform-group.control-group.hikashop_checkout_address_address_city .hkc-sm-4.hkcontrol-label{width:150px !important}
+
+#hikashop_order_3_1_zgodanr3 .hkc-sm-4.hkcontrol-label{vertical-align: top !important;}
+
+
+</style><?php
 $cart = $this->checkoutHelper->getCart();
 if(!hikashop_level(2))
 	return;
@@ -40,16 +52,16 @@ if(empty($this->ajax)) {
 	<div class="hikashop_checkout_loading_elem"></div>
 	<div class="hikashop_checkout_loading_spinner"></div>
 
-<?php
-	$this->checkoutHelper->displayMessages('fields');
 
-?>
 <fieldset class="hkform-horizontal">
 <?php
 	if(!empty($fields)) {
 		if(!empty($this->options['show_title'])) {
 ?>
-	<legend><?php echo JText::_('ADDITIONAL_INFORMATION'); ?></legend>
+	<legend><?php echo JText::_('Zgody formalne'); ?></legend><?php
+	$this->checkoutHelper->displayMessages('fields');
+
+?>
 <?php
 		}
 		foreach($fields as $fieldName => $oneExtraField) {
