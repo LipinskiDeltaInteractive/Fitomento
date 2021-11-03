@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="filter">
+		<field name="search" type="text" label="JGLOBAL_FILTER_SEARCH_LABEL" hint="JSEARCH_FILTER"/>
+		<field name="context" type="list" default="com_content.article" label="COM_ROUTE66_CONTEXT" onchange="this.form.submit();">
+			<option value="com_content.article">COM_ROUTE66_JOOMLA_ARTICLES</option>
+			<option value="com_k2.item">COM_ROUTE66_K2_ITEMS</option>
+		</field>
+		<field name="score" type="list" default="com_content.article" label="COM_ROUTE66_CONTEXT" onchange="this.form.submit();">
+			<option value="">COM_ROUTE66_SELECT_SCORE</option>
+			<option value="0-39">COM_ROUTE66_LOW</option>
+			<option value="40-69">COM_ROUTE66_MEDIUM</option>
+			<option value="70-100">COM_ROUTE66_HIGH</option>
+		</field>
+	</fields>
+	<fields name="list">
+		<field name="fullordering" type="list" label="JGLOBAL_LIST_FULL_ORDERING" onchange="this.form.submit();" default="id DESC">
+			<option value="">JGLOBAL_SORT_BY</option>
+			<option value="score ASC">COM_ROUTE66_SCORE_ASC</option>
+			<option value="score DESC">COM_ROUTE66_SCORE_DESCENDING</option>
+			<option value="title ASC">JGLOBAL_TITLE_ASC</option>
+			<option value="title DESC">JGLOBAL_TITLE_DESC</option>
+			<option value="id ASC">JGRID_HEADING_ID_ASC</option>
+			<option value="id DESC">JGRID_HEADING_ID_DESC</option>
+		</field>
+		<field name="limit" type="limitbox" class="input-mini" default="25" label="JGLOBAL_LIST_LIMIT" onchange="this.form.submit();"/>
+	</fields>
+</form>

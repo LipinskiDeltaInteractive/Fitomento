@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.6" method="upgrade">
+	<name>com_route66</name>
+	<author>Lefteris Kavadas</author>
+	<creationDate>September 2021</creationDate>
+	<copyright>Lefteris Kavadas / firecoders.com</copyright>
+	<license>GNU General Public License version 3 or later</license>
+	<authorEmail>info@firecoders.com</authorEmail>
+	<authorUrl>www.firecoders.com</authorUrl>
+	<version>1.9.2</version>
+	<install>
+		<sql>
+			<file driver="mysqli" charset="utf8">sql/install.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysqli" charset="utf8">sql/uninstall.sql</file>
+		</sql>
+	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<files folder="components/com_route66">
+		<folder>views</folder>
+		<filename>controller.php</filename>
+		<filename>route66.php</filename>
+		<filename>router.php</filename>
+	</files>
+	<media folder="media/route66" destination="route66">
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>scripts</folder>
+		<folder>images</folder>
+	</media>
+	<administration>
+		<menu>COM_ROUTE66</menu>
+		<submenu>
+			<menu view="urls" link="option=com_route66&amp;view=urls">COM_ROUTE66_URLS</menu>
+			<menu view="seo" link="option=com_route66&amp;view=seo">COM_ROUTE66_SEO_SCORES</menu>
+			<menu view="analysis" link="option=com_route66&amp;view=analysis">COM_ROUTE66_SEO_ANALYSIS</menu>
+			<menu view="sitemaps" link="option=com_route66&amp;view=sitemaps">COM_ROUTE66_SITEMAPS</menu>
+			<menu view="instantarticlesfeeds" link="option=com_route66&amp;view=instantarticlesfeeds">COM_ROUTE66_FACEBOOK_INSTANT_ARTICLES</menu>
+			<menu view="googlepagespeed" link="option=com_route66&amp;view=googlepagespeed">COM_ROUTE66_GOOGLE_PAGESPEED</menu>
+		</submenu>
+		<files folder="administrator/components/com_route66">
+			<folder>controllers</folder>
+			<folder>fields</folder>
+			<folder>forms</folder>
+			<folder>helpers</folder>
+			<folder>language</folder>
+			<folder>lib</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>route66.php</filename>
+		</files>
+	</administration>
+</extension>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset name="urls" label="COM_ROUTE66_URLS" addfieldpath="/administrator/components/com_route66/fields">
+		<field label="COM_ROUTE66_CANONICAL_LINKS" description="COM_ROUTE66_CANONICAL_LINKS_DESC" name="canonical" type="fcradio" default="1" class="btn-group btn-group-yesno" layout="joomla.form.field.radio.switcher">
+			<option value="0">JDISABLED</option>
+			<option value="1">JENABLED</option>
+		</field>
+		<field label="COM_ROUTE66_REDIRECTS" description="COM_ROUTE66_REDIRECTS_DESC" name="redirect" type="fcradio" default="1" class="btn-group btn-group-yesno" layout="joomla.form.field.radio.switcher">
+			<option value="0">JDISABLED</option>
+			<option value="1">JENABLED</option>
+		</field>
+		<field label="COM_ROUTE66_EXCLUSIONS" description="COM_ROUTE66_EXCLUSIONS_DESC" name="exclusions" multiple="true" type="components"/>
+		<field name="menuLinksSuffix" type="list" label="COM_ROUTE66_ADD_SUFFIX_TO_MENU_LINKS">
+			<option value="">JNO</option>
+			<option value="1">COM_ROUTE66_YES_TO_ALL_MENU_LINKS</option>
+			<option value="2">COM_ROUTE66_YES_ONLY_TO_MENU_LINKS_WITH_NO_CHILDREN</option>
+		</field>
+		<field name="menuLinksSuffixText" type="text" label="COM_ROUTE66_MENU_LINKS_SUFFIX" showon="menuLinksSuffix:1,2"/>
+		<field name="menuLinksSuffixExclusions" multiple="true" type="menuitem" label="COM_ROUTE66_EXCLUSIONS" description="COM_ROUTE66_SUFFIX_EXCLUSIONS_DESC" showon="menuLinksSuffix:1,2"/>
+		<field name="menuLinksTrailingSlash" type="list" label="COM_ROUTE66_ADD_TRAILING_SLASH_TO_MENU_LINKS">
+			<option value="">JNO</option>
+			<option value="1">COM_ROUTE66_YES_TO_ALL_MENU_LINKS</option>
+			<option value="2">COM_ROUTE66_YES_ONLY_TO_MENU_LINKS_WITH_CHILDREN</option>
+		</field>
+		<field name="menuLinksTrailingSlashExclusions" multiple="true" type="menuitem" label="COM_ROUTE66_EXCLUSIONS" description="COM_ROUTE66_TRAILING_SLASH_EXCLUSIONS_DESC" showon="menuLinksTrailingSlash:1,2"/>
+	</fieldset>
+	<fieldset name="seo" label="COM_ROUTE66_SEO" addfieldpath="/administrator/components/com_route66/fields">
+		<field label="COM_ROUTE66_SEO_ANALYSIS" description="COM_ROUTE66_SEO_ANALYSIS_DESC" name="seo" type="fcradio" default="1" class="btn-group btn-group-yesno" layout="joomla.form.field.radio.switcher">
+			<option value="0">JDISABLED</option>
+			<option value="1">JENABLED</option>
+		</field>
+		<field showon="seo:1" label="COM_ROUTE66_SEO_ANALYZER_DISPLAY_POSITION" description="COM_ROUTE66_SEO_ANALYZER_DISPLAY_POSITION_DESC" name="seo_display_position" type="list" default="form">
+			<option value="form">COM_ROUTE66_FORM</option>
+			<option value="toolbar">COM_ROUTE66_TOOLBAR</option>
+			<option value="sidebar">COM_ROUTE66_SIDEBAR</option>
+		</field>
+	</fieldset>
+	<fieldset name="sitemaps" label="COM_ROUTE66_SITEMAPS" addfieldpath="/administrator/components/com_route66/fields">
+		<field name="sitemapUrlsLimit" type="text" label="COM_ROUTE66_NUMBER_OF_URLS_PER_SITEMAP" description="COM_ROUTE66_NUMBER_OF_URLS_PER_SITEMAP_DESC" filter="integer" default="500"/>
+	</fieldset>
+	<fieldset name="instantarticles" label="COM_ROUTE66_FACEBOOK_INSTANT_ARTICLES" addfieldpath="/administrator/components/com_route66/fields">
+		<field name="facebookPageId" type="text" label="COM_ROUTE66_FACEBOOK_PAGE_ID" description="COM_ROUTE66_FACEBOOK_PAGE_ID_DESC"/>
+	</fieldset>
+	<fieldset name="googlepagespeed" label="COM_ROUTE66_GOOGLE_PAGESPEED" addfieldpath="/administrator/components/com_route66/fields">
+		<field label="COM_ROUTE66_OPTIMIZE_JAVASCRIPT" description="COM_ROUTE66_OPTIMIZE_JAVASCRIPT_DESC" name="optimizeJs" type="fcradio" default="0" class="btn-group btn-group-yesno" layout="joomla.form.field.radio.switcher">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field label="COM_ROUTE66_OPTIMIZE_JAVASCRIPT_METHOD" description="COM_ROUTE66_OPTIMIZE_JAVASCRIPT_METHOD_DESC" name="optimizeJsMethod" type="list" default="file" showon="optimizeJs:1">
+			<option value="file">COM_ROUTE66_FILE</option>
+			<option value="inline">COM_ROUTE66_INLINE</option>
+		</field>
+		<field label="COM_ROUTE66_OPTIMIZE_CSS" description="COM_ROUTE66_OPTIMIZE_CSS_DESC" name="optimizeCss" type="fcradio" default="0" class="btn-group btn-group-yesno" layout="joomla.form.field.radio.switcher">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field label="COM_ROUTE66_MINIFY_CSS" description="COM_ROUTE66_MINIFY_CSS_DESC" name="minifyCss" type="fcradio" default="1" class="btn-group btn-group-yesno" showon="optimizeCss:1" layout="joomla.form.field.radio.switcher">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field label="COM_ROUTE66_CACHE_TIME" description="COM_ROUTE66_CACHE_TIME_DESC" name="optimizeCacheTime" type="number" min="0" max="44000" step="1" default="15" filter="int" class="validate-numeric"/>
+		<field label="COM_ROUTE66_EXCLUSIONS" description="COM_ROUTE66_OPTIMIZE_EXCLUSIONS_DESC" name="optimizeExclusions" multiple="true" type="components"/>
+		<field type="spacer" name="spacer-1" hr="true"/>
+		<field label="COM_ROUTE66_DEFER_OFFSCREEN_IMAGES" description="COM_ROUTE66_DEFER_OFFSCREEN_IMAGES_DESC" name="lazyloadImages" type="fcradio" default="0" class="btn-group btn-group-yesno" layout="joomla.form.field.radio.switcher">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field showon="lazyloadImages:1" label="COM_ROUTE66_IMAGES_RESTRICTION_MODE" description="COM_ROUTE66_IMAGES_RESTRICTION_MODE_DESC" name="lazyloadImagesRestrictionsMode" type="list" default="0">
+			<option value="0">JNONE</option>
+			<option value="inclusive">COM_ROUTE66_INCLUSIVE</option>
+			<option value="exclusive">COM_ROUTE66_EXCLUSIVE</option>
+		</field>
+		<field label="COM_ROUTE66_IMAGE_CLASSNAME" showon="lazyloadImages:1[AND]lazyloadImagesRestrictionsMode!:0" name="lazyloadImagesClass" type="text"/>
+		<field type="spacer" name="spacer-2" hr="true"/>
+		<field label="COM_ROUTE66_DEFER_OFFSCREEN_IFRAMES" description="COM_ROUTE66_DEFER_OFFSCREEN_IFRAMES_DESC" name="lazyloadIframes" type="fcradio" default="0" class="btn-group btn-group-yesno" layout="joomla.form.field.radio.switcher">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field showon="lazyloadIframes:1" label="COM_ROUTE66_IFRAMES_RESTRICTION_MODE" description="COM_ROUTE66_IFRAMES_RESTRICTION_MODE_DESC" name="lazyloadIframesRestrictionsMode" type="list" default="0">
+			<option value="0">JNONE</option>
+			<option value="inclusive">COM_ROUTE66_INCLUSIVE</option>
+			<option value="exclusive">COM_ROUTE66_EXCLUSIVE</option>
+		</field>
+		<field label="COM_ROUTE66_IFRAME_CLASSNAME" showon="lazyloadIframes:1[AND]lazyloadIframesRestrictionsMode!:0" name="lazyloadIframesClass" type="text"/>
+		<field type="spacer" name="spacer-3" hr="true"/>
+		<field label="COM_ROUTE66_REPLACE_IFRAMES_WITH_FACADES" description="COM_ROUTE66_REPLACE_IFRAMES_WITH_FACADES_DESC" name="facadeIframes" type="fcradio" default="0" class="btn-group btn-group-yesno" layout="joomla.form.field.radio.switcher">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field showon="facadeIframes:1" label="COM_ROUTE66_IFRAME_FACADES_RESTRICTION_MODE" description="COM_ROUTE66_IFRAME_FACADES_RESTRICTION_MODE_DESC" name="facadeIframesRestrictionsMode" type="list" default="0">
+			<option value="0">JNONE</option>
+			<option value="inclusive">COM_ROUTE66_INCLUSIVE</option>
+			<option value="exclusive">COM_ROUTE66_EXCLUSIVE</option>
+		</field>
+		<field label="COM_ROUTE66_IFRAME_CLASSNAME" showon="facadeIframes:1[AND]facadeIframesRestrictionsMode!:0" name="facadeIframesClass" type="text"/>
+	</fieldset>
+	<fieldset name="advanced" label="JGLOBAL_FIELDSET_ADVANCED" addfieldpath="/administrator/components/com_route66/fields">
+		<field name="downloadId" label="COM_ROUTE66_DOWNLOAD_ID_LABEL" description="COM_ROUTE66_DOWNLOAD_ID_DESC" type="text"/>
+	</fieldset>
+	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
+		<field name="rules" type="rules" label="JCONFIG_PERMISSIONS_LABEL" validate="rules" filter="rules" component="com_route66" section="component"/>
+	</fieldset>
+</config>
